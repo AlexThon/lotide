@@ -8,7 +8,7 @@ const assertEqual = (actual, expected) => {
 };
 
 const head = function(list) {
-  return list[0]||undefined;
+  return list[0] || undefined;
 };
 
 // TEST CODE
