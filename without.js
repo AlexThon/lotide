@@ -1,31 +1,43 @@
+// function take array and a itemsToRemove array
+// return a new array with only items not in input array
 
-const without = (arrayA, arrayB) => {
-  if (!arrayB.length) {
-    return arrayA;
-  }
-  for (const item of arrayB) {
-    if (arrayA.includes(item)) {
-      return;
-    }
-  }
-  return arrayA;
-};
+const without = (arrayA, itemsToRemove) => {
+  let newArray = [];
 
-const assertArraysEqual = (actual, expected) => {
-  if (actual.length !== expected.length) {
-    console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
+  if (itemsToRemove.length < 1) {
     return;
   }
-  for (const current of expected) {
-    if (!actual.includes(current)) {
-      console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
-      return;
+  for (let item of arrayA) {
+    if (!itemsToRemove.includes(item)) {
+      newArray.push(item);
     }
   }
-  console.log(`Assertion Passed: [${actual}] === [${expected}]`);
+  return newArray;
+};
+
+
+const eqArrays = (arrayA, arrayB) => {
+  if (arrayA.length !== arrayB.length) {
+    return false;
+  }
+  for (const item of arrayB) {
+    if (!arrayA.includes(item)) {
+      return false;
+    }
+  }
+  return true;
+};
+
+
+const assertArraysEqual = (actual, expected) => {
+  if (eqArrays(actual,expected)) {
+    console.log(`Assertion Passed: [${actual}] === [${expected}]`);
+    return;
+  }
+  console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
 };
   
 
 const words = ["hello", "world", "lighthouse"];
 without(words, ["lighthouse"]); // no need to capture return value for this test case
-assertArraysEqual(words, ["hello", "world", "lighthouse"]);
+assertArraysEqual(without(words, ["lighthouse"]),["hello","world"]);
