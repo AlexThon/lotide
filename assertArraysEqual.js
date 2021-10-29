@@ -1,14 +1,24 @@
-const assertArraysEqual = (actual, expected) => {
-  if (actual.length !== expected.length) {
-    console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
-    return;
+
+
+const eqArrays = (arrayA, arrayB) => {
+  if (arrayA.length !== arrayB.length) {
+    return false;
   }
-  for (const current of expected) {
-    if (!actual.includes(current)) {
-      console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
-      return;
+  for (const item of arrayB) {
+    if (!arrayA.includes(item)) {
+      return false;
     }
   }
-  console.log(`Assertion Passed: [${actual}] === [${expected}]`);
+  return true;
+};
+
+const assertArraysEqual = (actual, expected) => {
+  if (!eqArrays(actual, expected)) {
+    console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
+    
+  } else {
+    console.log(`Assertion Passed: [${actual}] === [${expected}]`);
+  }
+  
 };
   
