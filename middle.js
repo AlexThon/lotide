@@ -6,27 +6,6 @@
 // edgecase IV:  two elements, there is no middle. Return [].
 
 
-
-const eqArrays = (arrayA, arrayB) => {
-  if (arrayA.length !== arrayB.length) {
-    return false;
-  }
-  for (const item of arrayB) {
-    if (!arrayA.includes(item)) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const assertArraysEqual = (actual, expected) => {
-  if (eqArrays(actual, expected)) {
-    console.log(`Assertion Passed: [${actual}] === [${expected}]`);
-    return;
-  }
-  console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
-};
-
 const middle = function(alist) {
   if (alist.length <= 2) {
     return [];
@@ -39,9 +18,7 @@ const middle = function(alist) {
   return alist.splice(mindleIndex - 1, mindleIndex);
 };
 
-
-assertArraysEqual(middle([1,3,4,5]),[3,4]);
-assertArraysEqual(middle([1,4,5]),[3,4]);
+module.exports = middle;
 
 
 

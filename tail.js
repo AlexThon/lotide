@@ -27,6 +27,8 @@ const tail = function(aList) {
   }
 };
 
+module.exports = tail;
+
 assertEqual(tail([1,3,4,5]), [3,4,5]);
 
 

@@ -1,17 +1,10 @@
-const assertEqual = (actual, expected) => {
-  if (actual === expected) {
-    console.log(`Assertion Passed: [${actual}] === [${expected}]`);
-  } else {
-    console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
-  }
+// return head of an array
+// check if head as a value or undfined
 
-};
-
+const assertEqual = require('./assertEqual');
 const head = function(list) {
   return list[0] || undefined;
 };
 
-// TEST CODE
-assertEqual(head([]), undefined);
-assertEqual(head(["Hello","Lighthouse","Labs"]),"Hello");
+module.exports = head;
 
